@@ -1,4 +1,4 @@
 # Logo
-Code for generating logo of Lewe Ucho written using Python mode of [Processing](http://processing.org).
+Code for generating logo of Lewe Ucho written using [Quil](http://quil.info).
 
-![Lewe Ucho logo](./logo.png)
+![Lewe Ucho logo](./logo/logo.png)
