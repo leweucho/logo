@@ -4,17 +4,20 @@
 
 
 (defn draw-triangle [current-step]
+  "Draw a single triangle—white or accidently gold—at nth position
+   on the canvas represented by current-step argument."
   (let [w (q/width)
         x (mod (* current-step) w)
         y (/ (* current-step) w)
-        m (rand-int 4)]
+        m (rand-int 4)
+        alpha (- 40 (* 10 m))]
 
         ;; grey outline
-        (q/stroke (q/color 80 80 80))
+        (q/stroke 80 80 80)
         ;; 'coin' toss fill color
         (if (> (rand-int 100) 80)
-          (q/fill 255 253 225 (- 40 (* 10 m)))
-          (q/fill 255 255 255 (- 40 (* 10 m))))
+          (q/fill 255 253 225 alpha)
+          (q/fill 255 255 255 alpha))
 
         (q/triangle (+ x (q/random (* m -8)     -3))
                     (+ y (q/random       3  (* m 8)))
@@ -25,6 +28,7 @@
 
 
 (defn draw-canvas []
+  "Cover the canvas with triangles."
   (let [step 33
         min-range (- 0 (q/width))
         max-range (/ (* (q/width) (q/height)) step)]
@@ -34,6 +38,7 @@
         (draw-triangle (* step i))))))
 
 
+;; Quil's functions: setup, draw & defsketch
 (defn setup []
   (q/background 255 255 255)
   (q/no-loop))
